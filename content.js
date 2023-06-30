@@ -36,10 +36,6 @@ function applyTunnelVision(paragraph) {
   // Clear any existing tunnel vision elements
   removeTunnelVision();
 
-  // Apply the vignette effect
-  document.body.style.overflow = "hidden";
-  document.body.style.filter = "blur(5px) grayscale(70%)";
-
   // Create a new tunnel vision element
   var tunnelElement = document.createElement("div");
   tunnelElement.id = "tunnel-vision-effect";
@@ -56,7 +52,12 @@ function applyTunnelVision(paragraph) {
   paragraph.style.position = "relative";
   paragraph.style.zIndex = "99999";
   paragraph.style.filter = "none";
-  paragraph.parentNode.insertBefore(tunnelElement, paragraph);
+
+  // Move the selected paragraph to the tunnel vision element
+  tunnelElement.appendChild(paragraph);
+
+  // Append the tunnel vision element to the body
+  document.body.appendChild(tunnelElement);
 }
 
 // Function to remove the tunnel vision effect
