@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Tunnel Vision Plugin",
+  "version": "0.0.0",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "permissions": ["activeTab"]
+}
