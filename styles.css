@@ -2,11 +2,23 @@
   position: fixed;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
   z-index: 9999;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+body {
+  overflow: hidden;
+  filter: blur(2px) grayscale(50%);
 }
 
 p {
   position: relative;
   z-index: 99999;
+  filter: none;
 }

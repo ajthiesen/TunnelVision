@@ -35,20 +35,26 @@ function applyTunnelVision(paragraph) {
   // Clear any existing tunnel vision elements
   removeTunnelVision();
 
+  // Apply the vignette effect
+  document.body.style.overflow = "hidden";
+  document.body.style.filter = "blur(5px) grayscale(70%)";
+
   // Create a new tunnel vision element
   var tunnelElement = document.createElement("div");
   tunnelElement.id = "tunnel-vision-effect";
   tunnelElement.style.position = "fixed";
   tunnelElement.style.left = "0";
   tunnelElement.style.right = "0";
-  tunnelElement.style.top = paragraph.offsetTop + "px";
-  tunnelElement.style.height = paragraph.offsetHeight + "px";
-  tunnelElement.style.background = "rgba(0, 0, 0, 0.5)";
+  tunnelElement.style.top = "0";
+  tunnelElement.style.bottom = "0";
+  tunnelElement.style.background =
+    "radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)";
   tunnelElement.style.zIndex = "9999";
 
-  // Apply the tunnel vision effect
+  // Apply the focus effect to the selected paragraph
   paragraph.style.position = "relative";
   paragraph.style.zIndex = "99999";
+  paragraph.style.filter = "none";
   paragraph.parentNode.insertBefore(tunnelElement, paragraph);
 }
 
@@ -60,17 +66,8 @@ function removeTunnelVision() {
     tunnelElement.parentNode.removeChild(tunnelElement);
     paragraph.style.position = "";
     paragraph.style.zIndex = "";
-  }
-}
-
-// Check if the entire page is selected
-var pageSelection = window.getSelection().toString().trim();
-if (pageSelection === "") {
-  var paragraphs = document.getElementsByTagName("p");
-  for (var i = 0; i < paragraphs.length; i++) {
-    paragraphs[i].addEventListener("click", function (event) {
-      selectedParagraph = event.target;
-      applyTunnelVision(selectedParagraph);
-    });
+    paragraph.style.filter = "";
+    document.body.style.overflow = "";
+    document.body.style.filter = "";
   }
 }
