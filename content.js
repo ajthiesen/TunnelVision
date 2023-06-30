@@ -25,7 +25,7 @@ function handleSelection() {
       applyTunnelVision(selectedParagraph);
     }
   } else {
-    // If no text is selected, reset the selectedParagraph variable
+    // If no text is selected or not within a paragraph, reset the selectedParagraph variable
     selectedParagraph = null;
     removeTunnelVision();
   }
