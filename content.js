@@ -1,3 +1,4 @@
+var selectedParagraph = null;
 // Listen for scroll and selection events
 window.addEventListener("scroll", handleScroll);
 document.addEventListener("selectionchange", handleSelection);
